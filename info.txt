@@ -1,0 +1,43 @@
+Start at: http://fl-martin-appraiser.governmax.com/propertymax/site_authlink.asp?r=martin.fl.us
+		This follow through should give you an sid (session id)
+		302 redirect, contains Location: rover30.asp?sid=<sid>
+Should be given body with iframe, follow iframe src (homepage.asp?sid=<sid>&agencyid=FL-Martin-Appraiser2)
+		Note: Referer is rover30
+		Follow redirect? (agency/fl-martin-appraiser2/FLMartin_home.asp?sid=<sid>)
+		Given homepage with <input button> onclick="window.location='http://fl-martin-appraiser.governmax.com/propertymax/search_property.asp?l_nm=owner&formelement=0&sid=<sid>'"
+When follow link on input button given search page 
+		form name=form1 action=search_property.asp?go.x=1
+			name_search:STARTSWITH
+			n.own_name:%%%
+			go:%A0%A0Go%A0%A0
+			site:home
+			l_nm:owner
+			sid:<sid>
+		Follow redirect
+
+For single page extraction
+	$('table[bordercolor=Silver]')
+  $('table[bordercolor=Green] table[bordercolor=Lime]') // For top header info
+  $('table[bordercolor=Green] table[cellpadding=2] tr td font') // For For body tables
+
+
+
+
+POST for property class http://fl-martin-appraiser.governmax.com/propertymax/search_property.asp?go.x=1
+
+rm.propclas:102   
+go:%A0%A0Go%A0%A0
+site:home
+l_nm:prop_class
+sid:<sid>
+
+
+Follow redirect
+(With property class)
+
+
+
+Get next page http://fl-martin-appraiser.governmax.com/propertymax/standard/list_proval_t.asp?r=205&l_mv=1&sid=D6F821F07C124994B82564F7E8344BFD (page 1)
+
+http://fl-martin-appraiser.governmax.com/propertymax/standard/list_proval_t.asp?r=101&l_mv=2&sid=D6F821F07C124994B82564F7E8344BFD (page 2)
+
