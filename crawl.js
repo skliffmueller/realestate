@@ -89,6 +89,7 @@ function parsePageListStart(body, done) {
 			},
 			$setOnInsert:{
 				status:'ready',
+				parcelId:"",
 				log:[{
 					status:'ready',
 					date:new Date()
@@ -127,6 +128,7 @@ function parsePageListStart(body, done) {
 			},
 			$setOnInsert:{
 				status:'ready',
+				page:-1,
 				log:[{
 					status:'ready',
 					date:new Date()
@@ -301,6 +303,7 @@ function asyncPages(body, done) {
 			},
 			$setOnInsert:{
 				status:'ready',
+				parcelId:"",
 				log:[{
 					status:'ready',
 					date:new Date()
@@ -342,6 +345,7 @@ function asyncPages(body, done) {
 			},
 			$setOnInsert:{
 				status:'ready',
+				page:-1,
 				log:[{
 					status:'ready',
 					date:new Date()

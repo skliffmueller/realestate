@@ -11,10 +11,12 @@ let s = new Schema(
       enum:['page','profile']
     },
     parcelId:{
-      type:String
+      type:String,
+      default:""
     },
     page:{
-      type:Number
+      type:Number,
+      default:-1
     },
     rawLink:{
       type:String, // The link to the next page, or persons profile
@@ -55,5 +57,7 @@ let s = new Schema(
 )
 
 s.index({action:-1, parcelId:1, page:1});
+s.index({action:1, page:1})
+s.index({status:1});
 
 module.exports = mongoose.model('Que', s)
