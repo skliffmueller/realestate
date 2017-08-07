@@ -1,0 +1,243 @@
+<div ng-controller="printCard as printCard">
+<div class="col-sm-12 no-print">
+    <div class="centerMe"><h3>Check sections desired for printout </h3></div>
+    <div class="col-sm-12 centerMe padme-bottom-10"><input type="button" ng-click="printCard.showAllPrint()" ng-value="printCard.printBtn"/></div>
+    <div class="col-sm-8">
+        <div class="col-sm-4"><input type="checkbox" ng-model="printCard.print.info" disabled/>Basic</div>
+        <div class="col-sm-4"><input type="checkbox" ng-model="printCard.print.sales" />Sales</div>
+        <!--<div class="col-sm-4"><input type="checkbox" ng-model="printCard.print.land"/>Land</div>-->
+        <div class="col-sm-4"><input type="checkbox" ng-model="printCard.print.special" />SF/YI</div>
+        <div class="col-sm-4"><input type="checkbox" ng-model="printCard.print.values" />Values</div>
+        <div class="col-sm-4"><input type="checkbox" ng-model="printCard.print.historical" />Historical</div>
+        <div class="col-sm-4"><input type="checkbox" ng-model="printCard.print.permits" />Permit</div>
+        <!--<div ng-hide="values.vacant == true">-->
+            <div class="col-sm-4"><input type="checkbox" ng-model="printCard.print.bldg" />Buildings</div>
+            <div ng-hide="printCard.print.bldg == false">
+                <div class="col-sm-5"><input type="checkbox" ng-model="printCard.print.image" />Images/Sketches</div>
+            </div>
+        <!--</div>-->
+</div>
+    <div class="col-sm-4"><input type="button" class="btn btn-success" value="Print Property Card"
+                                 ng-click="printCard.printMe()"/></div>
+
+</div>
+<!--<div  ng-show="printCard.print.info">Saint Lucie County, FL<br /> <H1>Property Identification</H1></div>-->
+    <div><p><br /></p></div>
+<div ng-show="printCard.print.info" ng-include="'./Tabs/BasicInfo.html'"></div>
+
+<div ng-show="printCard.print.sales" ng-include="'./Tabs/Sales.html'"></div>
+
+<div ng-show="printCard.print.bldg" ng-controller="buildings as buildings">
+        <div class="col-sm-12" ng-repeat="s in buildings.cards" ng-init="$index">
+
+            <div class="col-sm-12 centerMe"><H1>Building Information ({{$index + 1}} of {{buildings.cards.length}})</H1>
+            </div>
+            <div class="col-sm-12 centerMe padme-bottom-10">Finished Area: {{s.FinishedArea | number}} SF</div>
+            <div class="col-sm-12 centerMe padme-bottom-10">Gross Total Area: {{s.GrossArea | number}} SF</div>
+
+            <div class="col-sm-12 padme-bottom-10">
+                <div class="col-sm-12 centerMe"><label>Exterior Data</label></div>
+                <div class="col-sm-4"><label>View:</label> {{s.ViewDescription}}</div>
+                <div class="col-sm-4"><label>Roof Cover:</label> {{s.RoofCoverDescription}}</div>
+                <div class="col-sm-4"><label>Roof Structure:</label> {{s.RoofStructDescription}}</div>
+                <div class="col-sm-4"><label>Building Type:</label> {{s.ExtType}}</div>
+                <div class="col-sm-4"><label>Year Built:</label> {{s.YearBlt}}</div>
+                <div class="col-sm-4"><label>Frame:</label> {{s.FrameDescription}}</div>
+                <div class="col-sm-4"><label>Grade:</label> {{s.Grade}}</div>
+                <div class="col-sm-4"><label>Effective Year:</label> {{s.EffYearBlt}}</div>
+                <div class="col-sm-4"><label>Primary Wall:</label> {{s.PrimeWallDescription}}</div>
+                <div class="col-sm-4"><label>Story Height:</label> {{s.StoryHeightDescription}}</div>
+                <div class="col-sm-4"><label>No. Units:</label> {{s.ResidentialUnits + s.CommercialUnits}}</div>
+                <div class="col-sm-4"><label>Secondary Wall:</label> {{s.SecWallDescription}}</div>
+                <hr class="visible-xs"/>
+            </div>
+
+            <div class="col-sm-12 padme-bottom-10">
+                <div class="col-sm-12 centerMe"><label>Interior Data</label></div>
+                <div class="col-sm-4"><label>Bedrooms:</label> {{s.NumofBedrooms}}</div>
+                <div class="col-sm-4"><label>Electric:</label> {{s.ElectricDescription}}</div>
+                <div class="col-sm-4"><label>Primary Int Wall:</label> {{s.PrimeIntWalDescription}}</div>
+                <div class="col-sm-4"><label>Full Baths:</label> {{s.FullBath}}</div>
+                <div class="col-sm-4"><label>Heat Type:</label> {{s.HeatTypeDescription}}</div>
+                <div class="col-sm-4"><label>Avg Hgt/Floor:</label> {{s.AvgHtFl}}</div>
+                <div class="col-sm-4"><label>Half Baths:</label> {{s.HalfBath}}</div>
+                <div class="col-sm-4"><label>Heat Fuel:</label> {{s.HeatFuel}}</div>
+                <div class="col-sm-4"><label>Primary Floors:</label> {{s.PrimaryFloorsDescription}}</div>
+                <div class="col-sm-4"><label>A/C %:</label> {{s.PercentAirConditioned}}%</div>
+                <div class="col-sm-4"><label>Heated %:</label> {{s.PercentHeated}}%</div>
+                <div class="col-sm-4"><label>Sprinkled %:</label> {{s.PercentSprinkled}}%</div>
+            </div>
+            <!--<div class="col-sm-12 padme-bottom-10">HELLO BUILDINGID {{s.BuildingID}}</div>-->
+            <!--SKETCH LEGEND DATA-->
+
+            <div class="col-sm-12 padme-top-5">
+        <span ng-show="(printCard.print.bldg == true && printCard.print.image == true)"><a
+                href="{{s.image}}" target="_blank"><img class="col-xs-12 col-sm-5" onerror="imageError(this)"
+                                                        ng-src="{{s.image}}"/></a>
+        <a href="{{s.sketch}}" target=_blank><img class="col-xs-12 col-sm-5 col-sm-offset-1" onerror="imageError(this)"
+                                                  ng-src="{{s.sketch}}"/></a><br /><br />        </span>
+                <div class="col-sm-8 col-sm-offset-2">
+                    <table class="table table-condensed table-hover padme-bottom-10 sketchLegend hidden-xs">
+                        <tr class="centerMe"><td colspan="5"><h3>Sketch Area Legend</h3></td></tr>
+                        <tr class="">
+                            <td class=""><label>Sub Area</label></td>
+                            <td class=""><label>Description</label></td>
+                            <td class=""><label>Area</label></td>
+                            <td class=""><label>Fin. Area</label></td>
+                            <td class=""><label>Perimeter</label></td>
+                        </tr>
+                        <tr class=""
+                            ng-repeat="t in buildings.sketchAreas  | filter: { BuildingID: s.BuildingID } | orderBy : 'SeqNumber'">
+                            <td class="">{{t.SubArea}}</td>
+                            <td class="">{{t.SubAreaDescription}}</td>
+                            <td class="">{{t.Area}}</td>
+                            <td class="">{{t.FinishedArea}}</td>
+                            <td class="">{{t.Perimeter}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div ng-show="printCard.print.land" ng-include="'./Tabs/Land.html'"></div>
+
+<div ng-show="printCard.print.special" ng-include="'./Tabs/Features.html'"></div>
+
+<div ng-show="printCard.print.values" ng-controller="values as values">
+    <!--Current Value Breakdown Information for Print View ONLY-->
+    <div class="col-sm-12">
+        <hr/>
+        <h1 class="centerMe">Current Year Values</h1>
+
+        <div class="col-sm-5" ng-controller="basic as basic">
+            <div class="col-sm-12 centerMe padme-bottom-10"><label>Current Values Breakdown</label></div>
+            <div class="row">
+                <div class="col-sm-6"><label>Building:</label></div>
+                <div class="col-sm-4 ">{{basic.currentAssessmentValues.TotalAppraisedBuildingValue + basic.currentAssessmentValues.TotalAppraisedSFYIValue |
+                    currency:undefined:0}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6"><label>Land:</label></div>
+                <div class="col-sm-4 ">{{basic.currentAssessmentValues.TotalAppraisedLandValue | currency:undefined:0}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6"><label>Just/Market:</label></div>
+                <div class="col-sm-4 ">{{basic.currentAssessmentValues.TotalAppraisedValue | currency:undefined:0}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6"><label>Ag Credit:</label></div>
+                <div class="col-sm-4 red">{{basic.currentAssessmentValues.TotalAgriculturalCredit |
+                    currency:undefined:0}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6"><label>Save Our Homes or 10% Cap:</label></div>
+                <div class="col-sm-4 red">{{basic.currentAssessmentValues.MarketDiff | currency:undefined:0}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6"><label>Assessed:</label></div>
+                <div class="col-sm-4 ">{{basic.currentAssessmentValues.TotalAssessedValue | currency:undefined:0}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6"><label>Exemption(s):</label></div>
+                <div class="col-sm-4 red">{{basic.currentAssessmentValues.TotalValueExemption |
+                    currency:undefined:0}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6"><label>Taxable:</label></div>
+                <div class="col-sm-4 ">{{basic.currentAssessmentValues.TotalTaxableValue | currency:undefined:0}}
+                </div>
+            </div>
+            <hr class="visible-xs"/>
+        </div>
+
+        <div class="col-sm-7">
+            <div class="col-sm-12 centerMe"><label>Current Year Exemption Value Breakdown</label></div>
+            <div class="col-sm-2 hidden-xs"><label>Tax Year</label></div>
+            <div class="col-sm-2 hidden-xs"><label>Grant Year</label></div>
+            <div class="col-sm-2 hidden-xs"><label>Code</label></div>
+            <div class="col-sm-4 hidden-xs"><label>Description</label></div>
+            <div class="col-sm-2 hidden-xs"><label>Amount</label></div>
+            <div class="col-xs-12 col-sm-12" ng-repeat="s in values.exemptions | orderBy: 'SeqNumber'">
+                <div class="col-sm-2"><span class="visible-xs"><label>Tax Year</label></span>{{s.YearID}}</div>
+                <div class="col-sm-2"><span class="visible-xs"><label>Grant Year</label></span>{{s.GrantYear}}</div>
+                <div class="col-sm-2"><span class="visible-xs"><label>Code</label></span>{{s.ExemptionCode}}</div>
+                <div class="col-sm-4"><span class="visible-xs"><label>Description</label></span>{{s.ExemptionDescription}}
+                </div>
+                <div class="col-sm-2"><span class="visible-xs"><label>Amount</label></span>{{s.Amount
+                    | currency:undefined:0}}
+                </div>
+                <hr class="visible-xs"/>
+            </div>
+        </div>
+
+        <div class="col-sm-12 padme-top-5">
+            <div class="col-sm-12 centerMe"><label>Current Year Special Assessment Breakdown</label></div>
+            <div class="col-sm-2 hidden-xs"><label>Start Year</label></div>
+            <div class="col-sm-2 hidden-xs"><label>AssessCode</label></div>
+            <div class="col-sm-2 hidden-xs"><label>Units</label></div>
+            <div class="col-sm-4 hidden-xs"><label>Description</label></div>
+            <div class="col-sm-2 hidden-xs"><label>Amount</label></div>
+            <div class="col-sm-12" ng-repeat="s in values.specialAssessments | orderBy:'SeqNumber'">
+                <div class="col-sm-2"><span class="visible-xs"><label>Start Year</label></span>{{s.StartYear}}</div>
+                <div class="col-sm-2"><span class="visible-xs"><label>AssessCode</label></span>{{s.OtherAssmntCode}}
+                </div>
+                <div class="col-sm-2"><span class="visible-xs"><label>Units</label></span>{{s.Units}}</div>
+                <div class="col-sm-4"><span class="visible-xs"><label>Description</label></span>{{s.AssmntCodeDescription}}
+                </div>
+                <div class="col-sm-2"><span class="visible-xs"><label>Amount</label></span>{{s.Amount | currency}}
+                </div>
+                <hr class="visible-xs"/>
+            </div>
+            <div class="class=col-sm-9 col-sm-offset-2 col-md-offset-3 col-lg-offset-4 padme-top-5 clear-both"><br />
+                This does not necessarily represent the total Special Assessements that could be charged against
+                this property.
+                The total amount charged for special assessments is reflected on the most current tax statement and
+                information
+                is available with the <a class="taxCollector"
+                        href="https://stlucie.county-taxes.com/public/real_estate/parcels/{{values.pid}}/bills"
+                        target="_blank">SLC Tax Collector's Office
+                    <i class="fa fa-external-link-square taxCollector"></i></a>.
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!--Historical Value Information for Print View ONLY-->
+    <div ng-controller="values as values" ng-show="printCard.print.historical">
+    <div class="pull-left">
+        <hr/>
+        <br/>
+
+        <h1 class="centerMe">Historical Values</h1>
+        <!--For sizes SMALL through X-LARGE-->
+        <div ng-class="{'hidden-xs' : values.divValue != 'print'}">
+            <div class="col-sm-12">
+                <div class="col-sm-2 col-sm-offset-1"><label>Year</label></div>
+                <div class="col-sm-2"><label>Just/Market</label></div>
+                <div class="col-sm-2"><label>Assessed</label></div>
+                <div class="col-sm-2 currency"><label>Exemptions</label></div>
+                <div class="col-sm-2 currency"><label>Taxable</label></div>
+            </div>
+            <div class="col-sm-12" ng-repeat="s in values.assessedValueList | orderBy: 'YearID' : 'reverse'">
+                <div class="col-sm-2 col-sm-offset-1">{{s.YearID}}</div>
+                <div class="col-sm-2">{{s.TotalAppraisedValue | currency:undefined:0}}</div>
+                <div class="col-sm-2">{{s.TotalAssessedValue | currency:undefined:0}}</div>
+                <div class="col-sm-2 currency">{{s.TotalValueExemption | currency:undefined:0}}</div>
+                <div class="col-sm-2 currency">{{s.TotalTaxableValue | currency:undefined:0}}</div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<br />
+<div ng-show="printCard.print.permits" ng-include="'./Tabs/Permits.html'"></div>
+</div>

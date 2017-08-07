@@ -1,0 +1,227 @@
+<!-- SUMMARY CARD AREA -->
+<div ng-controller="printCard as printCard" class="col-sm-12 centerMe no-print" aria-hidden="false" ><span class="hidden-sm hidden-md hidden-lg"><em>The Summary Card is intended for single page printing of an overview of the current property card and will not display at small screen sizes. It will print properly using the button below.</em></span> <br /><input type="button" class="btn btn-success" value="Print Summary Card" ng-click="printCard.printMe()"/></div>
+<div id="printhead" class="centerMe">Michelle Franklin, CFA -- Saint Lucie County Property Appraiser -- All rights reserved.<br/>
+</div>
+<div class="col-xs-12 summaryCard">
+<br/>
+
+<table class="table table-responsive table-striped md-whiteframe-z1">
+<tr ng-controller="basic as basic">
+<td colspan="2">
+<!--Basic Property Information Area-->
+<div class="col-xs-12 centerMe"><h1>Property Identification</h1></div>
+
+<div class="row">
+<div class="col-xs-4"><label>Site Address:</label> {{basic.baseData.SiteAddress}}</div>
+<div class="col-xs-4"><label>Parcel ID:</label> {{basic.baseData.ParcelID}}</div>
+
+<div class="col-xs-4"><label>Account #:</label> {{basic.baseData.PropertyID}}</div>
+<div class="col-xs-4"><label>Sec/Town/Range:</label> {{basic.baseData.SecTnRng}}</div>
+<div class="col-xs-4"><label>Map ID:</label> <a href="http://www.paslc.org/downloads/mapbook/__{{basic.baseData.AssessorMap.replace('/','_')}}.pdf" target="_blank">{{basic.baseData.AssessorMap}}</a> </div>
+<div class="col-xs-4"><label>Zoning:</label> {{basic.baseData.Zoning}}</div>
+<div class="col-xs-4"><label>Use Type:</label> {{basic.baseData.LUC}}</div>
+<div class="col-xs-4"><label>Jurisdiction:</label> {{basic.baseData.SiteCity}}</div>
+</div>
+
+
+<div class="row">
+<div class="col-xs-5"><h1>Ownership</h1>
+
+<div class="row" ng-repeat="s in basic.owner">{{s}}</div>
+<div class="row padme-top-5">{{basic.mailAddress.address1}}<br />
+{{basic.mailAddress.address2}}
+</div>
+<div class="row">{{basic.mailAddress.city}}, {{basic.mailAddress.state}}
+{{basic.mailAddress.zip}}
+</div>
+</div>
+
+<div class="col-xs-6"><h1>Legal Description</h1>
+
+<div class="padme-bottom-10">
+<div class="row" ng-repeat="s in basic.legal">{{s}}</div>
+<br/></div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td ng-controller="basic as basic" class="col-xs-5">
+<h1 class="centerMe">Current Values</h1>
+<div class="row col-xs-6">
+<div class="col-xs-8 noPadding"><label>Just/Market:</label></div>
+<div class="col-xs-4 currency noPadding"> {{basic.currentAssessmentValues.TotalAppraisedValue |
+currency:undefined:0}}
+</div>
+</div>
+<div class="row col-xs-6">
+<div class="col-xs-8 noPadding"><label>Assessed:</label></div>
+<div class="col-xs-4 currency noPadding"> {{basic.currentAssessmentValues.TotalAssessedValue |
+currency:undefined:0}}
+</div>
+</div>
+<div class="row col-xs-6">
+<div class="col-xs-8 noPadding"><label>Exemptions:</label></div>
+<div class="col-xs-4 currency red noPadding"> {{basic.currentAssessmentValues.TotalValueExemption |
+currency:undefined:0}}
+</div>
+</div>
+<div class="row col-xs-6">
+<div class="col-xs-8 noPadding"><label>Taxable:</label></div>
+<div class="col-xs-4  noPadding currency"> {{basic.currentAssessmentValues.TotalTaxableValue |
+currency:undefined:0}}
+</div>
+</div>
+
+</td>
+<td  ng-controller="values as values" colspan="2" class="col-xs-7">
+<h1 class="centerMe">Historical Values 3-year</h1>
+<!--For sizes SMALL through X-LARGE-->
+<div class="col-xs-12 noPadding">
+<div class="col-xs-1 noPadding"><label>Year</label></div>
+<div class="col-xs-4 noPadding"><label>Just/Market</label></div>
+<div class="col-xs-3 noPadding"><label>Assessed</label></div>
+<div class="col-xs-4 currency noPadding"><label>Exemptions</label></div>
+<div class="col-xs-2 currency noPadding"><label>Taxable</label></div>
+</div>
+<div class="col-xs-12 noPadding" ng-repeat="s in values.assessedValueList | orderBy: 'YearID' : 'reverse' | limitTo: 3">
+<div class="col-xs-1 noPadding">{{s.YearID}}</div>
+<div class="col-xs-4 noPadding">{{s.TotalAppraisedValue | currency:undefined:0}}</div>
+<div class="col-xs-3 noPadding">{{s.TotalAssessedValue | currency:undefined:0}}</div>
+<div class="col-xs-4 currency noPadding">{{s.TotalValueExemption | currency:undefined:0}}</div>
+<div class="col-xs-2 currency noPadding">{{s.TotalTaxableValue | currency:undefined:0}}</div>
+</div>
+
+</td>
+</tr>
+<tr>
+<td ng-controller="sales as sales" class="col-xs-12" colspan="2">
+<h1 class="centerMe">Sale History</h1>
+
+<div class="col-xs-12 smaller noMargin">
+<div class="col-xs-3 noPadding"><label>Date</label></div>
+<div class="col-xs-3 noPadding"><label>Book/Page</label></div>
+<div class="col-xs-1 noPadding"><label>Sale Code</label></div>
+<div class="col-xs-1 noPadding"><label>Deed</label></div>
+<div class="col-xs-4 noPadding"><label>Grantor</label></div>
+<div class="col-xs-2 currency noPadding"><label>Price</label></div>
+</div>
+<div class="col-xs-12 noMargin" ng-repeat="s in sales.sales | orderBy: 'SeqNumber' | limitTo: 3 ">
+<div class="col-xs-3 noPadding">{{s.SaleDate | date:'MM-dd-yyyy'}}</div>
+<div class="col-xs-3 noPadding">
+<span ng-show="s.intBook >= 650">
+    <a href="https://acclaimweb.stlucieclerk.com/Details/GetDocumentByBookPage/OR/{{s.intBook}}/{{s.intPage}}"
+       target="_blank">
+{{s.Book}} <span ng-hide="s.Book == undefined">/</span> {{s.Page}}</a></span>
+<span ng-show="s.intBook < 650">{{s.Book}} <span ng-hide="s.Book == undefined">/</span> {{s.Page}}</span>
+</div>
+<div class="col-xs-1 noPadding">{{s.NALCode}}</div>
+<div class="col-xs-1 noPadding"><span title="{{s.hoverTool}}">{{s.DeedType}}</span></div>
+<div class="col-xs-4 noPadding">{{s.Grantor}}</div>
+<div class="col-xs-2 currency noPadding">{{s.SalePrice | currency:undefined:0}}</div>
+</div>
+</td>
+</tr>
+<tr ng-controller="buildings as buildings">
+<td colspan="2">
+<!--Building Information Repeating for each card in Print ONLY-->
+<div class="col-xs-12  noPadding" ng-repeat="s in buildings.cards | limitTo: 1" ng-init="$index">
+<!--ng-show="printCard.vacant == false">-->
+<div class="col-xs-12 centerMe"><H1 class="noPadding" style="line-height: 0">Primary Building Information</H1>
+<span class="col-xs-12 centerMe">Finished Area of this building: {{s.FinishedArea | number}} SF </span>
+<span class="col-xs-12 centerMe">Gross Area of this building: {{s.GrossArea | number}} SF </span></div>
+
+
+<div class="col-xs-12 padme-bottom-10 noPadding">
+<div class="col-xs-12 centerMe"><br /><label>Exterior Data</label></div>
+<div class="col-xs-4 noPadding"><label>View:</label> {{s.ViewDescription}}</div>
+<div class="col-xs-4 noPadding"><label>Roof Cover:</label> {{s.RoofCoverDescription}}</div>
+<div class="col-xs-4 noPadding"><label>Roof Structure:</label> {{s.RoofStructDescription}}</div>
+<div class="col-xs-4 noPadding"><label>Building Type:</label> {{s.ExtType}}</div>
+<div class="col-xs-4 noPadding"><label>Year Built:</label> {{s.YearBlt}}</div>
+<div class="col-xs-4 noPadding"><label>Frame:</label> {{s.FrameDescription}}</div>
+<div class="col-xs-4 noPadding"><label>Grade:</label> {{s.Grade}}</div>
+<div class="col-xs-4 noPadding"><label>Effective Year:</label> {{s.EffYearBlt}}</div>
+<div class="col-xs-4 noPadding"><label>Primary Wall:</label> {{s.PrimeWallDescription}}</div>
+<div class="col-xs-4 noPadding"><label>Story Height:</label> {{s.StoryHeightDescription}}</div>
+<div class="col-xs-4 noPadding"><label>No. Units:</label> {{s.ResidentialUnits + s.CommercialUnits}}</div>
+<div class="col-xs-4 noPadding"><label>Secondary Wall:</label> {{s.SecWallDescription}}</div>
+<hr class="visible-xs"/>
+</div>
+
+<div class="col-xs-12 padme-bottom-10 noPadding">
+<div class="col-xs-12 centerMe"><label>Interior Data</label></div>
+<div class="col-xs-4 noPadding"><label>Bedrooms:</label> {{s.NumofBedrooms}}</div>
+<div class="col-xs-4 noPadding"><label>A/C %:</label> {{s.PercentAirConditioned}}%</div>
+<div class="col-xs-4 noPadding"><label>Electric:</label> {{s.ElectricDescription}}</div>
+<div class="col-xs-4 noPadding"><label>Primary Int Wall:</label> {{s.PrimeIntWalDescription}}</div>
+<div class="col-xs-4 noPadding"><label>Full Baths:</label> {{s.FullBath}}</div>
+<div class="col-xs-4 noPadding"><label>Heated %:</label> {{s.PercentHeated}}%</div>
+<div class="col-xs-4 noPadding"><label>Heat Type:</label> {{s.HeatTypeDescription}}</div>
+
+<div class="col-xs-4 noPadding"><label>Avg Hgt/Floor:</label> {{s.AvgHtFl}}</div>
+<div class="col-xs-4 noPadding"><label>Half Baths:</label> {{s.HalfBath}}</div>
+<div class="col-xs-4 noPadding"><label>Sprinkled %:</label> {{s.PercentSprinkled}}%</div>
+<div class="col-xs-4 noPadding"><label>Heat Fuel:</label> {{s.HeatFuel}}</div>
+<div class="col-xs-4 noPadding"><label>Primary Floors:</label> {{s.PrimaryFloorsDescription}}</div>
+
+</div>
+</div>
+</td></tr>
+<tr ng-controller="basic as basic" class="pcImageSketch">
+<td colspan="2">
+<span ng-controller="buildings as buildings">
+    <a href="{{buildings.image}}" target="_blank"><img class="col-xs-4 noPadding noMargin" onerror="imageError(this)" ng-src="{{buildings.image}}"/></a>
+<a href="{{buildings.sketch}}" target=_blank><img class="col-xs-4 noPadding noMargin" onerror="imageError(this)" ng-src="{{buildings.sketch}}"/></a></span>
+<div class="col-xs-6">
+<div class="col-xs-offset-2 col-xs-10"><h1>Total Areas</h1></div>
+<div class="row col-xs-12">
+<div class="row" ng-hide="printCard.vacant == true">
+<div class="col-xs-offset-2 col-xs-6 rightAlign"><label>Finished/Under Air (SF):</label></div>
+<div class="col-xs-4 col-lg-3 rightAlign"> {{basic.totalAreas.Finished | number}}</div>
+</div>
+<div class="row" ng-hide="printCard.vacant == true">
+<div class="col-xs-offset-2 col-xs-6 rightAlign"><label>Gross Area (SF):</label></div>
+<div class="col-xs-4 col-lg-3 rightAlign"> {{basic.totalAreas.Gross | number}}</div>
+</div>
+<div class="row">
+<div class="col-xs-offset-2 col-xs-6 rightAlign"><label>Land Size (acres):</label></div>
+<div class="col-xs-4 col-lg-3 rightAlign"> {{basic.totalAreas.Acres}}</div>
+</div>
+<div class="row">
+<div class="col-xs-offset-2 col-xs-6 rightAlign"><label>Land Size (SF):</label></div>
+<div class="col-xs-4 col-lg-3 rightAlign"> {{basic.totalAreas.SF | number}}</div>
+</div>
+<div ng-controller="buildings as buildings" class="row">
+<div class="col-xs-offset-2 col-xs-6 rightAlign"><label>Total Building Count:</label></div>
+<div class="col-xs-4 col-lg-3 rightAlign"> {{buildings.cards.length | number}}</div>
+</div>
+
+</div>
+</div>
+</td>
+</tr>
+<tr>
+
+<td ng-controller="features as features" colspan="2">
+<h1 class="centerMe">Special Features and Yard Items</h1>
+
+<!--For sizes SMALL through X-LARGE-->
+<div class="col-xs-12">
+<div class="col-xs-4 col-xs-offset-2"><label>Type</label></div>
+<div class="col-xs-1"><label>Qty</label></div>
+<div class="col-xs-1"><label>Units</label></div>
+<div class="col-xs-2"><label>Year Blt</label></div>
+</div>
+<div class="col-xs-12" ng-repeat="s in features.special | orderBy : 'SeqNumber'">
+<div class="col-xs-4 col-xs-offset-2">{{s.OutbuildingDescription}}</div>
+<div class="col-xs-1">{{s.Quantity}}</div>
+<div class="col-xs-1">{{s.Units}}</div>
+<div class="col-xs-2">{{s.YearBuilt}}</div>
+</div>
+</td>
+
+</tr>
+</table>
+
+</div>

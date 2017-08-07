@@ -1,0 +1,50 @@
+<!--Land Information for Tab and Print View-->
+<div ng-controller="land as land">
+<div class="col-sm-12">
+    <div class="rcPrintFix"><p>&nbsp;</p></div>
+    <h1 class="centerMe">Land Information</h1>
+
+<div class="centerMe padme-bottom-10"><em><strong><h3>Total Area: {{land.totalAreas.SF | number}} SF /
+{{land.totalAreas.Acres}} acres</h3></strong></em></div>
+
+<!--For sizes SMALL through X-LARGE-->
+<div ng-class="{'hidden-xs' : land.divValue != 'print'}">
+<div class="col-sm-12">
+<div class="col-sm-3 col-sm-offset-2 hidden-xs"><label>Sequence Number</label></div>
+<div class="col-sm-2 hidden-xs"><label>Number/Type of Units</label></div>
+<div class="col-sm-3 hidden-xs"><label>Depth for Front Feet</label></div>
+</div>
+<div class="col-xs-12 col-sm-12" ng-repeat="s in land.land | orderBy : 'SeqNumber'">
+<div class="col-sm-3 col-sm-offset-2"><span class="visible-xs"><label>Sequence Number</label></span>{{s.SeqNumber}}
+</div>
+<div class="col-sm-2"><span class="visible-xs"><label>Number/Type of Units</label></span>{{s.Area}}
+{{s.LandUnitDescription}}
+</div>
+<div class="col-sm-3"><span class="visible-xs"><label>Depth for Front Feet</label></span>{{s.Depth}}
+</div>
+</div>
+</div>
+
+<!--For size X-SMALL ONLY-->
+<div class="col-xs-12 visible-xs hidden-sm hidden-md hidden-lg"
+ng-class="{'hidden-xs' : land.divValue == 'print'}">
+<br/>
+
+<div class="col-xs-12" ng-repeat="s in land.land | orderBy : 'SeqNumber'">
+<div class="row">
+<div class="col-xs-6"><label>Sequence Number:</label></div>
+<div class="col-xs-6"> {{s.SeqNumber}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Number/Type of Units:</label></div>
+<div class="col-xs-6"> {{s.Area}} {{s.LandUnitDescription}}</div>
+</div>
+<div class="row" ng-show="s.Depth != undefined">
+<div class="col-xs-6"><label>Depth for Front Feet:</label></div>
+<div class="col-xs-6"> {{s.Depth}}</div>
+</div>
+<br/>
+</div>
+</div>
+</div>
+</div>

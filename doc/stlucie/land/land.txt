@@ -1,0 +1,13 @@
+Land
+http://www.paslc.org/recordcard/api/re/Land/22412
+[{
+	"RowID":21486,
+	"PropertyID":22412,
+	"YearID":2017,
+	"SeqNumber":1,
+	"LandUnitDescription":"Front Ft",
+	"Area":50.00000,
+	"Depth":0.00000,
+	"TotalLand":7600.00000,
+	"TotalLandACRound":0.17000000000
+}]

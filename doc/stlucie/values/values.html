@@ -1,0 +1,223 @@
+<!--Current Value Breakdown Information for Print View ONLY-->
+<div ng-controller="values as values">
+<!--Current and Historical Value Information - Tab View ONLY-->
+    <div class="rcPrintFix"><p>&nbsp;</p></div>
+    <div class="col-sm-12">
+<h1 class="centerMe">Values</h1>
+
+<!--For sizes SMALL through X-LARGE-->
+<div class="col-sm-5 hidden-xs">
+<div class="col-sm-12 centerMe padme-bottom-10"><label><select ng-model="values.year"
+ng-change="values.changeYear(values.year);"
+ng-options="m as m for m in values.yearOptions"></select>
+Values Breakdown</label></div>
+<div class="row">
+<div class="col-sm-6"><label>Building:</label></div>
+<div class="col-sm-5 currency">{{values.assessmentValues.TotalAppraisedBuildingValue + values.assessmentValues.TotalAppraisedSFYIValue | currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6"><label>Land:</label></div>
+<div class="col-sm-5 currency">{{values.assessmentValues.TotalAppraisedLandValue | currency:undefined:0}}</div>
+</div>
+<div class="row">
+<div class="col-sm-6"><label>Just/Market:</label></div>
+<div class="col-sm-5 currency">{{values.assessmentValues.TotalAppraisedValue | currency:undefined:0}}</div>
+</div>
+<div class="row">
+<div class="col-sm-6"><label>Ag Credit:</label></div>
+<div class="col-sm-5 currency red">{{values.assessmentValues.TotalAgriculturalCredit | currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6"><label>Save Our Homes or 10% Cap:</label></div>
+<div class="col-sm-5 currency red">{{values.assessmentValues.MarketDiff | currency:undefined:0}}</div>
+</div>
+<div class="row">
+<div class="col-sm-6"><label>Assessed:</label></div>
+<div class="col-sm-5 currency">{{values.assessmentValues.TotalAssessedValue | currency:undefined:0}}</div>
+</div>
+<div class="row">
+<div class="col-sm-6"><label>Exemption(s):</label></div>
+<div class="col-sm-5 currency red">{{values.assessmentValues.TotalValueExemption | currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6"><label>Taxable:</label></div>
+<div class="col-sm-5 currency">{{values.assessmentValues.TotalTaxableValue | currency:undefined:0}}</div>
+</div>
+<hr class="visible-xs"/>
+</div>
+
+<div class="col-sm-7 hidden-xs">
+<div class="col-sm-12 centerMe"><label>Current Year Exemption Value Breakdown</label></div>
+<div class="col-xs-12">
+<div class="col-sm-2"><label>Tax Year</label></div>
+<div class="col-sm-2"><label>Grant Year</label></div>
+<div class="col-sm-2"><label>Code</label></div>
+<div class="col-sm-4"><label>Description</label></div>
+<div class="col-sm-2"><label>Amount</label></div>
+</div>
+<div class="col-xs-12" ng-repeat="s in values.exemptions | orderBy: 'SeqNumber'">
+<div class="col-sm-2">{{s.YearID}}</div>
+<div class="col-sm-2">{{s.GrantYear}}</div>
+<div class="col-sm-2">{{s.ExemptionCode}}</div>
+<div class="col-sm-4">{{s.ExemptionDescription}}</div>
+<div class="col-sm-2">{{s.Amount | currency:undefined:0}}</div>
+</div>
+</div>
+
+<div class="col-sm-12 padme-top-5 hidden-xs">
+<div class="col-xs-12 centerMe"><label>Current Year Special Assessment Breakdown</label></div>
+<div class="col-xs-12">
+<div class="col-sm-2"><label>Start Year</label></div>
+<div class="col-sm-2"><label>AssessCode</label></div>
+<div class="col-sm-2"><label>Units</label></div>
+<div class="col-sm-4"><label>Description</label></div>
+<div class="col-sm-2"><label>Amount</label></div>
+</div>
+<div class="col-xs-12" ng-repeat="s in values.specialAssessments | orderBy:'SeqNumber'">
+<div class="col-sm-2">{{s.StartYear}}</div>
+<div class="col-sm-2">{{s.OtherAssmntCode}}</div>
+<div class="col-sm-2">{{s.Units}}</div>
+<div class="col-sm-4">{{s.AssmntCodeDescription}}</div>
+<div class="col-sm-2">{{s.Amount | currency}}</div>
+</div>
+<div class="col-xs-12 padme-top-5"><br />
+This does not necessarily represent the total Special Assessments that could be charged against this property.
+The total amount charged for special assessments is reflected on the most current tax statement and information
+is available with the <a class="taxCollector"
+href="https://stlucie.county-taxes.com/public/real_estate/parcels/{{values.pid}}/bills"
+target="_blank">SLC Tax Collector's Office
+<i class="fa fa-external-link-square taxCollector"></i></a>.
+</div>
+</div>
+
+<!--For size X-SMALL ONLY-->
+<div class="col-sm-12 padme-top-5 visible-xs-block">
+<br/>
+
+<div class="col-sm-12 centerMe"><label><select ng-model="values.year"
+ng-change="values.changeYear(values.year);"
+ng-options="m as m for m in values.yearOptions"></select>
+Values Breakdown</label></div>
+<br/>
+
+<div class="col-sm-12">
+<div class="row">
+<div class="col-xs-6"><label>Building:</label></div>
+<div class="col-xs-6 currency"> {{values.assessmentValues.TotalAppraisedBuildingValue |
+currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Land:</label></div>
+<div class="col-xs-6 currency"> {{values.assessmentValues.TotalAppraisedLandValue | currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Just/Market:</label></div>
+<div class="col-xs-6 currency"> {{values.assessmentValues.TotalAppraisedValue | currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Ag Credit:</label></div>
+<div class="col-xs-6 currency red"> {{values.assessmentValues.TotalAgriculturalCredit |
+currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Save Our Homes or 10% Cap:</label></div>
+<div class="col-xs-6 currency red"> {{values.assessmentValues.MarketDiff |
+currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Assessed:</label></div>
+<div class="col-xs-6 currency"> {{values.assessmentValues.TotalAssessedValue | currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Exemption(s):</label></div>
+<div class="col-xs-6 currency red"> {{values.assessmentValues.TotalValueExemption |
+currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Taxable:</label></div>
+<div class="col-xs-6 currency"> {{values.assessmentValues.TotalTaxableValue | currency:undefined:0}}
+</div>
+</div>
+<br/>
+</div>
+</div>
+
+<div class="col-sm-12 padme-top-5 visible-xs-block table-bordered">
+<br/>
+
+<div class="col-sm-12 centerMe"><label>Current Year Exemption Value Breakdown</label></div>
+<br/>
+
+<div class="col-sm-12" ng-repeat="s in values.exemptions | orderBy: 'SeqNumber'">
+<div class="row">
+<div class="col-xs-6"><label>Tax Year:</label></div>
+<div class="col-xs-6"> {{s.YearID}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Grant Year:</label></div>
+<div class="col-xs-6"> {{s.GrantYear}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Code:</label></div>
+<div class="col-xs-6"> {{s.ExemptionCode}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Description:</label></div>
+<div class="col-xs-6"> {{s.ExemptionDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Amount:</label></div>
+<div class="col-xs-6"> {{s.Amount | currency:undefined:0}}</div>
+</div>
+<br/>
+</div>
+</div>
+
+<div class="col-sm-12 padme-top-5 visible-xs table-bordered">
+<br/>
+
+<div class="col-sm-12 centerMe"><label>Current Year Special Assessment Breakdown</label></div>
+<br/>
+
+<div class="col-sm-12" ng-repeat="s in values.specialAssessments | orderBy:'SeqNumber'">
+<div class="row">
+<div class="col-xs-6"><label>Start Year:</label></div>
+<div class="col-xs-6"> {{s.StartYear}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>AssessCode:</label></div>
+<div class="col-xs-6"> {{s.OtherAssmntCode}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Units:</label></div>
+<div class="col-xs-6"> {{s.Units}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Description:</label></div>
+<div class="col-xs-6"> {{s.AssmntCodeDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Amount:</label></div>
+<div class="col-xs-6"> {{s.Amount | currency}}</div>
+</div>
+<br/>
+</div>
+<div> This does not necessarily represent the total Special Assessments that could be charged against this property.
+The total amount charged for special assessments is reflected on the most current tax statement and information
+is available with the <a class="taxCollector"
+                         href="https://stlucie.county-taxes.com/public/real_estate/parcels/{{values.pid}}/bills"
+                        target="_blank">SLC Tax Collector's Office
+<i class="fa fa-external-link-square taxCollector"></i></a>.</div>
+</div>
+</div>
+</div>

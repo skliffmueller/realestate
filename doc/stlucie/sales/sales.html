@@ -1,0 +1,68 @@
+<!--Sale History Information for Tab and Print View-->
+<div ng-controller="sales as sales">
+    <div class="rcPrintFix"><p>&nbsp;</p></div>
+    <div class="col-sm-12">
+<h1 class="centerMe">Sale History</h1>
+
+<!--For sizes SMALL through X-LARGE-->
+<div ng-class="{'hidden-xs' : sales.divValue != 'print'}">
+<div class="col-sm-12">
+<div class="col-sm-2"><label>Date</label></div>
+<div class="col-sm-2"><label>Book/Page</label></div>
+<div class="col-sm-1"><label>Sale Code</label></div>
+<div class="col-sm-1"><label>Deed</label></div>
+<div class="col-sm-3"><label>Grantor</label></div>
+<div class="col-sm-2 currency"><label>Price</label></div>
+</div>
+<div class="col-xs-12 col-sm-12" ng-repeat="s in sales.sales | orderBy: 'SeqNumber'">
+<div class="col-sm-2 ">{{s.SaleDate | date:'MMM d, y'}}</div>
+<div class="col-sm-2 ">
+<span ng-show="s.intBook >= 650">
+    <a href="https://acclaimweb.stlucieclerk.com/Details/GetDocumentByBookPage/OR/{{s.intBook}}/{{s.intPage}}"
+       target="_blank">
+{{s.Book}} <span ng-hide="s.Book == undefined">/</span> {{s.Page}}</a></span>
+<span ng-show="s.intBook < 650">{{s.Book}} <span ng-hide="s.Book == undefined">/</span> {{s.Page}}</span>
+</div>
+<div class="col-sm-1">{{s.NALCode}}</div>
+<div class="col-sm-1 "><span title="{{s.hoverTool}}">{{s.DeedType}}</span></div>
+<div class="col-sm-3 ">{{s.Grantor}}</div>
+<div class="col-sm-2 currency">{{s.SalePrice | currency:undefined:0}}</div>
+</div>
+</div>
+
+
+<!--For size X-SMALL ONLY-->
+<div class="col-xs-12 visible-xs hidden-sm hidden-md hidden-lg"
+ng-class="{'hidden-xs' : sales.divValue == 'print'}">
+<br/>
+
+<div class="col-xs-12" ng-repeat="s in sales.sales | orderBy: 'SeqNumber'">
+<div class="row">
+<div class="col-xs-6"><label>Date:</label></div>
+<div class="col-xs-6"> {{s.SaleDate | date:'MMM d, y'}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Book/Page:</label></div>
+<div class="col-xs-6"> {{s.Book}} <span ng-hide="s.Book == undefined">/</span> {{s.Page}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Sale Code:</label></div>
+<div class="col-xs-6"> {{s.NALCode}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Deed:</label></div>
+<div class="col-xs-6"><span title="{{s.hoverTool}}">{{s.DeedType}}</span></div>
+</div>
+<div class="row" ng-show="s.Grantor != undefined">
+<div class="col-xs-6"><label>Grantor:</label></div>
+<div class="col-xs-6"> {{s.Grantor}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Price:</label></div>
+<div class="col-xs-6"> {{s.SalePrice | currency:undefined:0}}</div>
+</div>
+<br/>
+</div>
+</div>
+</div>
+</div>

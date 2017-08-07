@@ -1,0 +1,69 @@
+<!--Permit Information for Tab and Print View-->
+<div ng-controller="permits as permits">
+    <div class="rcPrintFix"><p>&nbsp;</p></div>
+    <div class="col-sm-12 ">
+<h1 class="centerMe">Permits</h1>
+
+<!--For sizes SMALL through X-LARGE-->
+<div ng-class="{'hidden-xs' : permits.divValue != 'print'}">
+<div class="col-sm-12">
+<div class="col-sm-2 col-sm-offset-1"><label>Number</label></div>
+<div class="col-sm-2"><label>Issue Date</label></div>
+<div class="col-sm-2"><label>Description</label></div>
+<div class="col-sm-2 currency"><label>Amount</label></div>
+<div class="col-sm-2 currency"><label>Fee</label></div>
+</div>
+<div class="col-xs-12 col-sm-12" ng-repeat="s in permits.permits | orderBy : 'SeqNumber' : 'reverse'">
+<div class="col-sm-2 col-sm-offset-1">{{s.PermitNumber}}</div>
+<div class="col-sm-2">{{s.PermitDate | date: 'MMM d, y'}}</div>
+<div class="col-sm-2">{{s.PermitDescription}}</div>
+<div class="col-sm-2 currency">{{s.Amount | currency:undefined:0}}</div>
+<div class="col-sm-2 currency">{{s.Fee | currency:undefined:0}}</div>
+</div>
+</div>
+
+<!--For size X-SMALL ONLY-->
+<div class="col-xs-12 visible-xs hidden-sm hidden-md hidden-lg"
+ng-class="{'hidden-xs' : permits.divValue == 'print'}">
+<br/>
+
+<div class="col-xs-12" ng-repeat="s in permits.permits | orderBy : 'SeqNumber' : 'reverse'">
+<div class="row">
+<div class="col-xs-6"><label>Number:</label></div>
+<div class="col-xs-6"> {{s.PermitNumber}}</div>
+</div>
+<div class="row" ng-show="s.PermitDate != undefined">
+<div class="col-xs-6"><label>Issue Date:</label></div>
+<div class="col-xs-6"> {{s.PermitDate | date: 'MMM d, y'}}</div>
+</div>
+<div class="row" ng-show="s.PermitDescription != undefined">
+<div class="col-xs-6"><label>Description:</label></div>
+<div class="col-xs-6"> {{s.PermitDescription}}</div>
+</div>
+<div class="row" ng-show="s.Amount != undefined">
+<div class="col-xs-6"><label>Amount:</label></div>
+<div class="col-xs-6"> {{s.Amount | currency:undefined:0}}</div>
+</div>
+<div class="row" ng-show="s.Fee != undefined">
+<div class="col-xs-6"><label>Fee:</label></div>
+<div class="col-xs-6"> {{s.Fee | currency:undefined:0}}</div>
+</div>
+<br/>
+</div>
+</div>
+
+<!--For all sizes-->
+<div class="col-sm-9 col-sm-offset-2 col-md-offset-3 col-lg-offset-4 padme-top-5 clear-both"><br />
+<label>Notice:</label> This does not necessarily represent all the permits for this property. <br/>Click
+the
+following link to check for additional permit data in
+<a href="http://cofpweb01.city-ftpierce.com/Click2GovBP/Index.jsp" target="_blank"
+ng-show="permits.baseData.SiteCity == 'Fort Pierce'">Fort Pierce</a>
+<a href="http://pandapublicweb.cityofpsl.com/Default.aspx" target="_blank"
+ng-show="permits.baseData.SiteCity == 'Port Saint Lucie'">Port Saint Lucie</a>
+<a href="http://codeinspectionpublic.stlucieco.gov/Permit_Status.aspx" target="_blank"
+ng-hide="permits.baseData.SiteCity == 'Fort Pierce' || permits.baseData.SiteCity == 'Port Saint Lucie'">Saint
+Lucie County</a>
+</div>
+</div>
+</div>

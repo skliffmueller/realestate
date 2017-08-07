@@ -1,0 +1,32 @@
+Values: AssesmentValue
+http://www.paslc.org/recordcard/api/re/AssessmentValue/34175
+Note: MarketDiff sometimes exists? currency
+[{
+	"RowID":196484,
+	"PropertyID":34175,
+	"YearID":2016,
+	"ValueCategory":"FV2",
+	"TotalAppraisedLandValue":0.0,
+	"TotalAppraisedBuildingValue":82700.0,
+	"TotalAppraisedSFYIValue":0.0,
+	"TotalAgriculturalCredit":0.0,
+	"TotalAssessedValue":69740.0,
+	"TotalAppraisedValue":82700.0,
+	"TotalValueExemption":0.0,
+	"TotalTaxableValue":69740.0,
+	"DateSaved":"2017-04-09T09:37:51.897"
+},{
+	"RowID":31738,
+	"PropertyID":34175,
+	"YearID":2015,
+	"ValueCategory":"FV2",
+	"TotalAppraisedLandValue":0.0,
+	"TotalAppraisedBuildingValue":63400.0,
+	"TotalAppraisedSFYIValue":0.0,
+	"TotalAgriculturalCredit":0.0,
+	"TotalAssessedValue":63400.0,
+	"TotalAppraisedValue":63400.0,
+	"TotalValueExemption":0.0,
+	"TotalTaxableValue":63400.0,
+	"DateSaved":"2016-02-10T05:37:07.157"
+}]

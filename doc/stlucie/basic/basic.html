@@ -1,0 +1,153 @@
+<!--Basic Property Information Area-->
+<div ng-controller="basic as basic">
+<div class="col-sm-12">
+    <div class="rcPrintFix"><p>&nbsp;</p></div>
+<div class="col-sm-12 centerMe"><h1>Property Identification</h1></div>
+
+<!--For sizes SMALL through X-LARGE-->
+<div class="row padme-bottom-10" ng-class="{'hidden-xs' : basic.divValue != 'print'}">
+<div class="col-sm-5 "><label>Site Address:</label> {{basic.baseData.SiteAddress}}</div>
+<div class="col-sm-5 col-sm-offset-2"><label>Parcel ID:</label> {{basic.baseData.ParcelID}}</div>
+<div class="col-sm-5 "><label>Sec/Town/Range:</label> {{basic.baseData.SecTnRng}}
+</div>
+<div class="col-sm-5 col-sm-offset-2"><label>Account #:</label> {{basic.baseData.PropertyID}}
+</div>
+<div class="col-sm-5 "><label>Map ID:</label> <a href="http://www.paslc.org/downloads/mapbook/__{{basic.baseData.AssessorMap.replace('/','_')}}.pdf" target="_blank">{{basic.baseData.AssessorMap}}</a> </div>
+<div class="col-sm-5 col-sm-offset-2"><label>Use Type:</label> {{basic.baseData.LUC}}</div>
+<div class="col-sm-5 "><label>Zoning:</label> {{basic.baseData.Zoning}}</div>
+<div class="col-sm-5 col-sm-offset-2"><label>Jurisdiction:</label> {{basic.baseData.SiteCity}}
+</div>
+</div>
+
+<!--For sizes X-SMALL ONLY-->
+<div class="padme-bottom-10 hidden-sm hidden-md hidden-lg"
+ng-class="{'hidden-xs' : basic.divValue == 'print'}">
+<div class="row">
+<div class="col-xs-6"><label>Site Address:</label></div>
+<div class="col-xs-6"> {{basic.baseData.SiteAddress}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Parcel ID:</label></div>
+<div class="col-xs-6"> {{basic.baseData.ParcelID}}</div>
+</div>
+<div class="row" ng-show="basic.baseData.Section != undefined">
+<div class="col-xs-6"><label>Sec/Town/Range:</label></div>
+<div class="col-xs-6"> {{basic.baseData.SecTnRng}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Account #:</label></div>
+<div class="col-xs-6"> {{basic.baseData.PropertyID}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Map ID:</label></div>
+<div class="col-xs-6 "><a href="http://www.paslc.org/downloads/mapbook/__{{basic.baseData.AssessorMap.replace('/','_')}}.pdf" target="_blank">{{basic.baseData.AssessorMap}}</a> </div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Use Type:</label></div>
+<div class="col-xs-6"> {{basic.baseData.LUC}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Zoning:</label></div>
+<div class="col-xs-6"> {{basic.baseData.Zoning}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>City/County:</label></div>
+<div class="col-xs-6"> {{basic.baseData.SiteCity}}</div>
+</div>
+</div>
+</div>
+
+
+<div class="col-sm-6">
+<div class="col-sm-12"><h1>Ownership</h1></div>
+<div class="col-sm-12 padme-bottom-10">
+<div class="row" ng-repeat="s in basic.owner track by $index">{{s}}</div>
+<div class="row padme-top-5">{{basic.mailAddress.address1}}<br />{{basic.mailAddress.address2}}
+</div>
+<div class="row">{{basic.mailAddress.city}}, {{basic.mailAddress.state}}
+{{basic.mailAddress.zip}}
+</div>
+</div>
+
+<div class="col-sm-12"><h1>Legal Description</h1></div>
+<div class="col-sm-12 padme-bottom-10">
+<div class="row" ng-repeat="s in basic.legal">{{s}}</div>
+<br/>
+</div>
+
+<div class="col-sm-12"><h1>Current Values</h1></div>
+<div class="row col-xs-12 padme-bottom-10">
+<div class="row">
+<div class="col-xs-6"><label>Just/Market Value:</label></div>
+<div class="col-xs-4 col-lg-3 currency"> {{basic.currentAssessmentValues.TotalAppraisedValue |
+currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Assessed Value:</label></div>
+<div class="col-xs-4 col-lg-3 currency"> {{basic.currentAssessmentValues.TotalAssessedValue |
+currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Exemptions:</label></div>
+<div class="col-xs-4 col-lg-3 currency red"> {{basic.currentAssessmentValues.TotalValueExemption |
+currency:undefined:0}}
+</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Taxable Value:</label></div>
+<div class="col-xs-4 col-lg-3 currency"> {{basic.currentAssessmentValues.TotalTaxableValue |
+currency:undefined:0}}
+</div>
+</div>
+
+<div class="row">
+<div class="col-xs-12"><label>Taxes for this parcel:&nbsp;</label>
+    <a class="taxCollector" href="https://stlucie.county-taxes.com/public/real_estate/parcels/{{basic.baseData.ParcelID}}/bills"
+    target="_blank">SLC Tax Collector's Office
+<i class="fa fa-external-link-square taxCollector"></i></a></div>
+</div>
+    <!-- the following is for trimprint -->
+<div class="row">
+<div class="col-xs-12"><label>Download TRIM for this parcel:&nbsp;</label><a
+href="http://www.paslc.org/trimprint/api/pdf/{{basic.baseData.PropertyID}}/2016";
+target="_blank">Download PDF
+<i class="fa fa-external-link-square blue"></i></a></div>
+</div>
+    <!-- end of trimprint-->
+<!-- The following will display Exemptions data following redesign and approval-->
+<div class="row hide">
+<div class="col-xs-12"><label>Homestead:&nbsp;&nbsp;{{basic.baseData.HEXYear}}&nbsp;&nbsp;</label>
+{{basic.baseData.HEX && 'Approved' || 'None'}}</div>
+</div>
+</div>
+</div>
+
+<div class="col-sm-6 centerMe padme-bottom-10">
+<a href="{{basic.mainImage}}" target="_blank"><img class="col-xs-12 col-md-10 col-lg-8"
+onerror="this.src='/libraries/img/imageOrSketch_NA.png'" ng-src="{{basic.mainImage}}"/></a>
+</div>
+
+<div class="col-sm-6 padme-bottom-10">
+<div class="col-sm-offset-2 col-xs-10"><h1>Total Areas</h1></div>
+<div class="row col-xs-12 col-md-10 padme-bottom-10">
+<div class="row" ng-hide="basic.vacant == true">
+<div class="col-sm-offset-2 col-xs-6 col-lg-5"><label>Finished/Under Air (SF):</label></div>
+<div class="col-xs-4 col-lg-3"> {{basic.totalAreas.Finished | number}}</div>
+</div>
+<div class="row" ng-hide="basic.vacant == true">
+<div class="col-sm-offset-2 col-xs-6 col-lg-5"><label>Gross Area (SF):</label></div>
+<div class="col-xs-4 col-lg-3"> {{basic.totalAreas.Gross | number}}</div>
+</div>
+<div class="row">
+<div class="col-sm-offset-2 col-xs-6 col-lg-5"><label>Land Size (acres):</label></div>
+<div class="col-xs-4 col-lg-3"> {{basic.totalAreas.Acres}}</div>
+</div>
+<div class="row">
+<div class="col-sm-offset-2 col-xs-6 col-lg-5"><label>Land Size (SF):</label></div>
+<div class="col-xs-4 col-lg-3"> {{basic.totalAreas.SF | number}}</div>
+</div>
+</div>
+</div>
+</div>

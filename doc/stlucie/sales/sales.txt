@@ -1,0 +1,42 @@
+Sales
+http://www.paslc.org/recordcard/api/re/Sale/34175
+[{
+	"RowID":142057,
+	"PropertyID":34175,
+	"YearID":2017,
+	"SeqNumber":1,
+	"SaleDate":"1985-04-01T00:00:00", // Sale Date
+	"SalePrice":58500.00, // Sale Price
+	"NALCode":"XX00", // Sale Code
+	"NALCodeDescription":"Qual-1 ID DO NOT USE", // Sale Description
+	"DeedType":"CV", // Has stricter definition (hover tool suggests so)
+	"Book":"0463", // Book / Page or Page
+	"Page":"0552",
+	"Grantor":"" // Optional
+},{
+	"RowID":142056,
+	"PropertyID":34175,
+	"YearID":2017,
+	"SeqNumber":2,
+	"SaleDate":"1980-05-01T00:00:00",
+	"SalePrice":65500.00,
+	"NALCode":"XX00",
+	"NALCodeDescription":"Qual-1 ID DO NOT USE",
+	"DeedType":"CV",
+	"Book":"0333",
+	"Page":"0681",
+	"Grantor":""
+},{
+	"RowID":142055,
+	"PropertyID":34175,
+	"YearID":2017,
+	"SeqNumber":3,
+	"SaleDate":"1977-12-01T00:00:00",
+	"SalePrice":36900.00,
+	"NALCode":"XX00",
+	"NALCodeDescription":"Qual-1 ID DO NOT USE",
+	"DeedType":"CV",
+	"Book":"0278",
+	"Page":"2761",
+	"Grantor":""
+}]

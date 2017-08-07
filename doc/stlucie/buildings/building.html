@@ -1,0 +1,324 @@
+<!--Building Information for Tab View Only-->
+<div ng-controller="buildings as buildings">
+
+
+<div class="col-sm-12">
+    <div class="rcPrintFix"><p>&nbsp;</p></div>
+    <div class="col-sm-12 centerMe">
+<h1>Building Information</h1>
+<span ng-hide="buildings.totalCards == 1">
+<button type="button" class="btn btn-primary" ng-disabled="buildings.BuildingSequence == 1" value="<<"
+ng-click="buildings.setCard(buildings.BuildingSequence-1)"><i class="fa fa-chevron-left"></i></button>
+<em><strong>({{buildings.BuildingSequence}} of {{buildings.totalCards}})</strong></em>
+<button type="button" class="btn btn-primary" ng-disabled="buildings.BuildingSequence == buildings.totalCards"
+value=">>" ng-click="buildings.setCard(buildings.BuildingSequence+1)"><i class="fa fa-chevron-right"></i>
+</button>
+</span>
+</div>
+
+<h3><div class="col-sm-12 centerMe padme-bottom-10 padme-top-5"><em><strong>Finished/Under Air Area:
+{{buildings.bldg.FinishedArea | number}} SF<br /><span class="grey99">Gross Total Area: {{buildings.bldg.GrossArea | number}} SF</span></strong></em></div></h3>
+
+
+<!--EXTERIOR DATA-->
+<div class="col-sm-12 padme-bottom-10">
+<div class="col-sm-12 centerMe"><label>Exterior Data</label></div>
+
+<!--For sizes MEDIUM through X-LARGE-->
+<div class="hidden-xs hidden-sm">
+<div class="row">
+<div class="col-md-2"><label>Building Type:</label></div>
+<div class="col-md-2"> {{buildings.bldg.ExtType}}</div>
+<div class="col-md-2"><label>Year Built:</label></div>
+<div class="col-md-2"> {{buildings.bldg.YearBlt}}</div>
+<div class="col-md-2"><label>Frame:</label></div>
+<div class="col-md-2"> {{buildings.bldg.FrameDescription}}</div>
+</div>
+<div class="row">
+<div class="col-md-2"><label>Grade:</label></div>
+<div class="col-md-2"> {{buildings.bldg.Grade}}</div>
+<div class="col-md-2"><label>Effective Year:</label></div>
+<div class="col-md-2"> {{buildings.bldg.EffYearBlt}}</div>
+<div class="col-md-2"><label>Primary Wall:</label></div>
+<div class="col-md-2"> {{buildings.bldg.PrimeWallDescription}}</div>
+</div>
+<div class="row">
+<div class="col-md-2"><label>No. Units:</label></div>
+<div class="col-md-2"> {{buildings.bldg.ResidentialUnits + buildings.bldg.CommercialUnits}}</div>
+<div class="col-md-2"><label>Story Height:</label></div>
+<div class="col-md-2"> {{buildings.bldg.StoryHeightDescription}}</div>
+<div class="col-md-2"><label>Secondary Wall:</label></div>
+<div class="col-md-2"> {{buildings.bldg.SecWallDescription}}</div>
+</div>
+<div class="row">
+<div class="col-md-2"><label>Roof Cover:</label></div>
+<div class="col-md-2"> {{buildings.bldg.RoofCoverDescription}}</div>
+<div class="col-md-2"><label>Roof Structure:</label></div>
+<div class="col-md-2"> {{buildings.bldg.RoofStructDescription}}</div>
+<div class="col-md-2"><label>View:</label></div>
+<div class="col-md-2">{{buildings.bldg.ViewDescription}}</div>
+</div>
+
+</div>
+
+<!--For size SMALL ONLY-->
+<div class="visible-sm">
+<div class="row">
+<div class="col-sm-3"><label>Building Type:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.ExtType}}</div>
+<div class="col-sm-3"><label>Grade:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.Grade}}</div>
+</div>
+<div class="row">
+<div class="col-sm-3"><label>Year Built:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.YearBlt}}</div>
+<div class="col-sm-3"><label>Effective Year:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.EffYearBlt}}</div>
+</div>
+<div class="row">
+<div class="col-sm-3"><label>No. Units:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.ResidentialUnits + buildings.bldg.CommercialUnits}}</div>
+<div class="col-sm-3"><label>Story Height:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.StoryHeightDescription}}</div>
+</div>
+<div class="row">
+<div class="col-sm-3"><label>Roof Cover:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.RoofCoverDescription}}</div>
+<div class="col-sm-3"><label>Roof Structure:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.RoofStructDescription}}</div>
+</div>
+<div class="row">
+<div class="col-sm-3"><label>Primary Wall:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.PrimeWallDescription}}</div>
+<div class="col-sm-3"><label>Secondary Wall:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.SecWallDescription}}</div>
+</div>
+<div class="row">
+<div class="col-sm-3"><label>View:</label></div>
+<div class="col-sm-3">{{buildings.bldg.ViewDescription}}</div>
+<div class="col-sm-3"><label>Frame:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.FrameDescription}}</div>
+</div>
+</div>
+
+<!--For size XS-SMALL ONLY-->
+<div class="visible-xs">
+<div class="row">
+<div class="col-xs-6"><label>Building Type:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.ExtType}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Grade:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.Grade}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Year Built:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.YearBlt}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Effective Year:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.EffYearBlt}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>No. Units:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.ResidentialUnits + buildings.bldg.CommercialUnits}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Primary Wall:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.PrimeWallDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Secondary Wall:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.SecWallDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Roof Cover:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.RoofCoverDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Roof Structure:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.RoofStructDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>View:</label></div>
+<div class="col-xs-6">{{buildings.bldg.ViewDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Frame:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.FrameDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Story Height:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.StoryHeightDescription}}</div>
+</div>
+</div>
+</div>
+
+<!--INTERIOR DATA-->
+<div class="col-sm-12 padme-bottom-10">
+<div class="col-sm-12 centerMe"><label>Interior Data</label></div>
+
+<!--For sizes MEDIUM through X-LARGE-->
+<div class="hidden-xs hidden-sm">
+<div class="row">
+<div class="col-md-2"><label>Bedrooms:</label></div>
+<div class="col-md-2"> {{buildings.bldg.NumofBedrooms}}</div>
+<div class="col-md-2"><label>Electric:</label></div>
+<div class="col-md-2"> {{buildings.bldg.ElectricDescription}}</div>
+<div class="col-md-2"><label>Primary Int Wall:</label></div>
+<div class="col-md-2"> {{buildings.bldg.PrimeIntWallDescription}}</div>
+</div>
+<div class="row">
+<div class="col-md-2"><label>Full Baths:</label></div>
+<div class="col-md-2"> {{buildings.bldg.FullBath}}</div>
+<div class="col-md-2"><label>Heat Type:</label></div>
+<div class="col-md-2"> {{buildings.bldg.HeatTypeDescription}}</div>
+<div class="col-md-2"><label>Primary Floors:</label></div>
+<div class="col-md-2"> {{buildings.bldg.PrimaryFloorsDescription}}</div>
+</div>
+<div class="row">
+<div class="col-md-2"><label>Half Baths:</label></div>
+<div class="col-md-2"> {{buildings.bldg.HalfBath}}</div>
+<div class="col-md-2"><label>Heat Fuel:</label></div>
+<div class="col-md-2"> {{buildings.bldg.HeatFuel}}</div>
+<div class="col-md-2"><label>Avg Hgt/Floor:</label></div>
+<div class="col-md-2"> {{buildings.bldg.AvgHtFl}}</div>
+</div>
+<div class="row">
+<div class="col-md-2"><label>A/C %:</label></div>
+<div class="col-md-2"> {{buildings.bldg.PercentAirConditioned}}%</div>
+<div class="col-md-2"><label>Heated %:</label></div>
+<div class="col-md-2"> {{buildings.bldg.PercentHeated}}%</div>
+<div class="col-md-2"><label>Interior Sprinkler %:</label></div>
+<div class="col-md-2"> {{buildings.bldg.PercentSprinkled}}%</div>
+</div>
+</div>
+
+<!--For size SMALL ONLY-->
+<div class="visible-sm">
+<div class="row">
+<div class="col-sm-3"><label>Bedrooms:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.NumofBedrooms}}</div>
+<div class="col-sm-3"><label>Full Baths:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.FullBath}}</div>
+</div>
+<div class="row">
+<div class="col-sm-3"><label>Primary Int Wall:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.PrimeIntWallDescription}}</div>
+<div class="col-sm-3"><label>Half Baths:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.HalfBath}}</div>
+</div>
+<div class="row">
+<div class="col-sm-3"><label>Primary Floors:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.PrimaryFloorsDescription}}</div>
+<div class="col-sm-3"><label>Avg Hgt/Floor:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.AvgHtFl}}</div>
+</div>
+<div class="row">
+<div class="col-sm-3"><label>Heat Type:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.HeatTypeDescription}}</div>
+<div class="col-sm-3"><label>Heat Fuel:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.HeatFuel}}</div>
+</div>
+<div class="row">
+<div class="col-sm-3"><label>Heated %:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.PercentHeated}}%</div>
+<div class="col-sm-3"><label>A/C %:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.PercentAirConditioned}}%</div>
+</div>
+<div class="row">
+<div class="col-sm-3"><label>Electric:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.ElectricDescription}}</div>
+<div class="col-sm-3"><label>Interior Sprinkler %:</label></div>
+<div class="col-sm-3"> {{buildings.bldg.PercentSprinkled}}%</div>
+</div>
+</div>
+
+<!--For size XS-SMALL ONLY-->
+<div class="visible-xs">
+<div class="row">
+<div class="col-xs-6"><label>Bedrooms:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.NumofBedrooms}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Full Baths:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.FullBath}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Half Baths:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.HalfBath}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Primary Int Wall:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.PrimeIntWallDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Primary Floors:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.PrimaryFloorsDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Avg Hgt/Floor:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.AvgHtFl}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Heat Type:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.HeatTypeDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Heat Fuel:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.HeatFuel}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Electric:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.ElectricDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>A/C %:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.PercentAirConditioned}}%</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Heated %:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.PercentHeated}}%</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Int Sprinkler %:</label></div>
+<div class="col-xs-6"> {{buildings.bldg.PercentSprinkled}}%</div>
+</div>
+</div>
+
+
+
+
+<div class="col-sm-12 padme-bottom-10">
+<a
+href="{{buildings.image}}" target="_blank"><img class="col-xs-12 col-sm-5 img-responsive" onerror="imageError(this)"
+ng-src="{{buildings.image}}"/></a>
+<a
+href="{{buildings.sketch}}" target="_blank"><img class="col-xs-12 col-sm-5 col-sm-offset-1"
+ng-src="{{buildings.sketch}}" onerror="imageError(this)"/></a>
+</div>
+<!--SKETCH LEGEND DATA-->
+<div class="col-sm-8 col-sm-offset-2">
+<table class="table table-condensed table-hover padme-bottom-10 sketchLegend hidden-xs">
+<tr class="centerMe"><td colspan="5"><h3>Sketch Area Legend</h3></td></tr>
+<tr class="">
+<td class=""><label>Sub Area</label></td>
+<td class=""><label>Description</label></td>
+<td class=""><label>Area</label></td>
+<td class=""><label>Fin. Area</label></td>
+<td class=""><label>Perimeter</label></td>
+</tr>
+<tr class=""
+ng-repeat="s in buildings.sketchAreas  | filter: { BuildingID: buildings.bldg.BuildingID } | orderBy : 'SeqNumber'">
+<td class="">{{s.SubArea}}</td>
+<td class="">{{s.SubAreaDescription}}</td>
+<td class="">{{s.Area}}</td>
+<td class="">{{s.FinishedArea}}</td>
+<td class="">{{s.Perimeter}}</td>
+</tr>
+</table>
+
+</div>
+</div>
+</div>
+</div>

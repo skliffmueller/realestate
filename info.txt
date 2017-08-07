@@ -41,3 +41,55 @@ Get next page http://fl-martin-appraiser.governmax.com/propertymax/standard/list
 
 http://fl-martin-appraiser.governmax.com/propertymax/standard/list_proval_t.asp?r=101&l_mv=2&sid=D6F821F07C124994B82564F7E8344BFD (page 2)
 
+
+
+
+
+St Lucie County:
+POST http://www.paslc.org/map/propertySearch.aspx?FindThis=%%&TypeSearch=1
+FindThis=%%&TypeSearch=1
+
+
+http://www.paslc.org/RECard/#/propCard/34175
+
+	-Basic Info: http://www.paslc.org/recordcard/api/re/baserecordcard/34175
+	[{"RowID":31746,"PropertyID":34175,"ParcelID":"2507-705-0032-000-9","YearID":2017,"HEX":false,"HEXYear":2017,"SiteAddress":"2400 S OCEAN DR 1112","SiteCity":"Fort Pierce","DistrictGroup":"0022","SecTnRng":"07/35S/41E","AssessorMap":"25/07F","Zoning":"R4A","LUC":"0400","Owner1":"Andrea H Abernethy","Owner2":"","Owner3":"","Street1":"5807 S Indian River Dr","Street2":"","City":"Fort Pierce","State":"FL","Zip":"34982","Country":"UNITED STATES","LegalDescription":"OCEAN VILLAS III UNIT 1112 AND PRO-RATA SHARE IN COMMON ELEMENTS (OR 463-552)"}]
+
+
+	-Values: AssesmentValue
+	http://www.paslc.org/recordcard/api/re/AssessmentValue/34175
+	[{"RowID":196484,"PropertyID":34175,"YearID":2016,"ValueCategory":"FV2","TotalAppraisedLandValue":0.0,"TotalAppraisedBuildingValue":82700.0,"TotalAppraisedSFYIValue":0.0,"TotalAgriculturalCredit":0.0,"TotalAssessedValue":69740.0,"TotalAppraisedValue":82700.0,"TotalValueExemption":0.0,"TotalTaxableValue":69740.0,"DateSaved":"2017-04-09T09:37:51.897"},{"RowID":31738,"PropertyID":34175,"YearID":2015,"ValueCategory":"FV2","TotalAppraisedLandValue":0.0,"TotalAppraisedBuildingValue":63400.0,"TotalAppraisedSFYIValue":0.0,"TotalAgriculturalCredit":0.0,"TotalAssessedValue":63400.0,"TotalAppraisedValue":63400.0,"TotalValueExemption":0.0,"TotalTaxableValue":63400.0,"DateSaved":"2016-02-10T05:37:07.157"}]
+
+	-Buildings:
+	http://www.paslc.org/recordcard/api/re/Building/34175
+	[{"RowID":35473,"PropertyID":34175,"YearID":2017,"BuildingID":37745,"BuildingSequence":1,"ViewCode":"1001","ViewCodeDescription":"Golf Corse-V","ExtType":"X107","ExtTypeDescription":"Ocean Villas 3","Grade":"X0VA","GradeDescription":"OceanV1-2-3","StoryHgt":"0010","StoryHeightDescription":"1 Story","RoofCover":" ","RoofCoverDescription":" ","YearBlt":1977,"EffYearBlt":1977,"ResidentialUnits":1,"CommercialUnits":0,"RoofStruct":" ","RoofStructDescription":" ","Frame":" ","FrameDescription":" ","PrimeWall":"BS","PrimeWallDescription":"CB Stucco","SecWall":" ","SecWallDescription":" ","SecWallPercent":0.0,"Color":"A","FinishedArea":689,"GrossArea":897,"NumofBedrooms":1,"FullBath":0,"ThreeQuarterBath":0,"HalfBath":0,"PercentAirConditioned":0.00,"Electric":" ","ElectricDescription":" ","HeatType":" ","HeatTypeDescription":" ","HeatFuel":" ","HeatFuelDescription":" ","PercentHeated":0.00,"PrimeIntWall":" ","PrimeIntWallDescription":" ","AvgHtFl":0,"PrimaryFloors":" ","PrimaryFloorsDescription":" ","PercentSprinkled":0.0}]
+	http://www.paslc.org/ImageSketch/api/images/34175/37745
+	http://www.paslc.org/ImageSketch/api/sketches/34175/37745
+
+	-Special Features and Yard Items
+	http://www.paslc.org/recordcard/api/re/SFYI/22412
+	[{"RowID":27543,"PropertyID":22412,"YearID":2017,"BuildingID":24628,"SeqNumber":1,"OutbuildingCode":"FEN4","OutbuildingDescription":"CHAINLINK 4'","YardItemSpFeature":false,"Quantity":1,"Units":50.00000,"Quality":"AV","QualityDescription":"Average","Condition":"AV","ConditionDescription":"Average","YearBuilt":1995}]
+
+	-Permits
+	http://www.paslc.org/recordcard/api/re/Permit/22412
+	[{"RowID":38112,"PropertyID":22412,"YearID":2017,"SeqNumber":1,"PermitNumber":"0800000410","PermitDate":"2008-03-12T00:00:00","PermitDescription":"Roof","Amount":2379.0,"Fee":100.00,"ClosedDate":null},{"RowID":38113,"PropertyID":22412,"YearID":2017,"SeqNumber":2,"PermitNumber":"F88001061P","PermitDate":"1988-09-01T00:00:00","PermitDescription":"Additions to existing construction","Amount":0.0,"Fee":0.00,"ClosedDate":"1988-06-01T00:00:00"},{"RowID":38114,"PropertyID":22412,"YearID":2017,"SeqNumber":3,"PermitNumber":"F88001061E","PermitDate":"1988-09-01T00:00:00","PermitDescription":"Additions to existing construction","Amount":0.0,"Fee":0.00,"ClosedDate":"1988-06-01T00:00:00"},{"RowID":38115,"PropertyID":22412,"YearID":2017,"SeqNumber":4,"PermitNumber":"F88001061W","PermitDate":"1987-02-01T00:00:00","PermitDescription":"Additions to existing construction","Amount":2000.0,"Fee":2000.00,"ClosedDate":"1988-06-01T00:00:00"},{"RowID":38116,"PropertyID":22412,"YearID":2017,"SeqNumber":5,"PermitNumber":"F88001061S","PermitDate":"1987-02-01T00:00:00","PermitDescription":"Shed","Amount":8000.0,"Fee":8000.00,"ClosedDate":"1988-06-01T00:00:00"},{"RowID":38117,"PropertyID":22412,"YearID":2017,"SeqNumber":6,"PermitNumber":"F88001061A","PermitDate":"1987-02-01T00:00:00","PermitDescription":"Air Conditioning Only","Amount":1500.0,"Fee":1500.00,"ClosedDate":"1988-06-01T00:00:00"}]
+
+	-Sales
+	http://www.paslc.org/recordcard/api/re/Sale/34175
+	[{"RowID":142057,"PropertyID":34175,"YearID":2017,"SeqNumber":1,"SaleDate":"1985-04-01T00:00:00","SalePrice":58500.00,"NALCode":"XX00","NALCodeDescription":"Qual-1 ID DO NOT USE","DeedType":"CV","Book":"0463","Page":"0552","Grantor":""},{"RowID":142056,"PropertyID":34175,"YearID":2017,"SeqNumber":2,"SaleDate":"1980-05-01T00:00:00","SalePrice":65500.00,"NALCode":"XX00","NALCodeDescription":"Qual-1 ID DO NOT USE","DeedType":"CV","Book":"0333","Page":"0681","Grantor":""},{"RowID":142055,"PropertyID":34175,"YearID":2017,"SeqNumber":3,"SaleDate":"1977-12-01T00:00:00","SalePrice":36900.00,"NALCode":"XX00","NALCodeDescription":"Qual-1 ID DO NOT USE","DeedType":"CV","Book":"0278","Page":"2761","Grantor":""}]
+
+	-Exemption
+	http://www.paslc.org/recordcard/api/re/Exemption/2125
+	[{"RowID":2259,"PropertyID":2125,"YearID":2016,"SeqNumber":1,"GrantYear":1999,"ExemptionCode":"0500","ExemptionDescription":"Homestead Exemption","Amount":25000.00000},{"RowID":2260,"PropertyID":2125,"YearID":2016,"SeqNumber":2,"GrantYear":2008,"ExemptionCode":"0550","ExemptionDescription":"Homestead Exemption over $ 50,000","Amount":793.00000},{"RowID":2261,"PropertyID":2125,"YearID":2016,"SeqNumber":3,"GrantYear":2009,"ExemptionCode":"4000","ExemptionDescription":"Widow's Exemption","Amount":500.00000}]
+
+	-Special
+	http://www.paslc.org/recordcard/api/re/SpecialAssessment/22412
+	[{"RowID":21058,"PropertyID":22412,"YearID":2017,"SeqNumber":1,"StartYear":1999,"OtherAssmntCode":"0041","AssmntCodeDescription":"Fort Pierce Stormwater Charge","Units":1.00000,"Amount":54.00}]
+
+	-Sketch Area Legend
+	http://www.paslc.org/recordcard/api/re/SketchSubArea/34175
+	[{"RowID":92183,"PropertyID":34175,"YearID":2017,"SeqNumber":1,"BuildingID":37745,"SubArea":"XBS1","SubAreaDescription":"Base Floor Living Area (Value Calculated)","Area":689.00000,"FinishedArea":689.00000,"Perimeter":112.00},{"RowID":92184,"PropertyID":34175,"YearID":2017,"SeqNumber":2,"BuildingID":37745,"SubArea":"XOPR","SubAreaDescription":"Open Porch (Value Calculated)","Area":104.00000,"FinishedArea":0.00000,"Perimeter":60.00},{"RowID":92185,"PropertyID":34175,"YearID":2017,"SeqNumber":3,"BuildingID":37745,"SubArea":"XSPN","SubAreaDescription":"Screen Porch No Value","Area":104.00000,"FinishedArea":0.00000,"Perimeter":42.00}]
+
+	-Land
+	http://www.paslc.org/recordcard/api/re/Land/22412
+	[{"RowID":21486,"PropertyID":22412,"YearID":2017,"SeqNumber":1,"LandUnitDescription":"Front Ft","Area":50.00000,"Depth":0.00000,"TotalLand":7600.00000,"TotalLandACRound":0.17000000000}]

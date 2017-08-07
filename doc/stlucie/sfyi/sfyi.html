@@ -1,0 +1,49 @@
+<!--Special Features Yard Items Information for Tab and Print View-->
+<div ng-controller="features as features">
+<div class="col-sm-12">
+    <div class="rcPrintFix"><p>&nbsp;</p></div>
+    <h1 class="centerMe">Special Features and Yard Items</h1>
+
+<!--For sizes SMALL through X-LARGE-->
+<div ng-class="{'hidden-xs' : features.divValue != 'print'}">
+<div class="col-sm-12">
+<div class="col-sm-4 col-sm-offset-2"><label>Type</label></div>
+<div class="col-sm-1"><label>Qty</label></div>
+<div class="col-sm-1"><label>Units</label></div>
+<div class="col-sm-2"><label>Year Blt</label></div>
+</div>
+<div class="col-xs-12 col-sm-12" ng-repeat="s in features.special | orderBy : 'SeqNumber'">
+<div class="col-sm-4 col-sm-offset-2">{{s.OutbuildingDescription}}</div>
+<div class="col-sm-1">{{s.Quantity}}</div>
+<div class="col-sm-1">{{s.Units}}</div>
+<div class="col-sm-2">{{s.YearBuilt}}</div>
+</div>
+</div>
+
+<!--For size X-SMALL ONLY-->
+<div class="col-xs-12 visible-xs hidden-sm hidden-md hidden-lg"
+ng-class="{'hidden-xs' : features.divValue == 'print'}">
+<br/>
+
+<div class="col-xs-12" ng-repeat="s in features.special | orderBy : 'SeqNumber'">
+<div class="row">
+<div class="col-xs-6"><label>Type:</label></div>
+<div class="col-xs-6"> {{s.OutbuildingDescription}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Quantity:</label></div>
+<div class="col-xs-6"> {{s.Quantity}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Units:</label></div>
+<div class="col-xs-6"> {{s.Units}}</div>
+</div>
+<div class="row">
+<div class="col-xs-6"><label>Year Built:</label></div>
+<div class="col-xs-6"> {{s.YearBuilt}}</div>
+</div>
+<br/>
+</div>
+</div>
+</div>
+</div>
